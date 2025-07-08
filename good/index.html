@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Snake and Ladder</title>
+</head>
+<body>
+    <h1>🎲 Snake & Ladder Game</h1>
+    <button onclick="rollDice()">Roll Dice</button>
+    <button onclick="resetGame()">Reset Game</button>
+    <p id="result"></p>
+    <p id="position"></p>
+
+    <script>
+        async function rollDice() {
+            const res = await fetch('http://127.0.0.1:5000/roll');
+            const data = await res.json();
+            document.getElementById('result').innerText = `Dice Rolled: ${data.dice}, ${data.message}`;
+            document.getElementById('position').innerText = `Current Position: ${data.position}`;
+        }
+
+        async function resetGame() {
+            const res = await fetch('http://127.0.0.1:5000/reset');
+            const data = await res.json();
+            document.getElementById('result').innerText = data.message;
+            document.getElementById('position').innerText = `Current Position: ${data.position}`;
+        }
+    </script>
+</body>
+</html>
