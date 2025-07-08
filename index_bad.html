@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>bad snake</title></head>
+<body>
+    <h2>sn&lad</h2>
+    <button onclick="go()">do</button>
+    <button onclick="st()">rst</button>
+    <p id="a"></p><p id="b"></p><p id="s"></p>
+
+    <script>
+        async function go() {
+            let y = await fetch('http://127.0.0.1:5000/go');
+            let j = await y.json();
+            document.getElementById('a').innerText = "🎲 " + j.d + " - " + j.m;
+            document.getElementById('b').innerText = "Pos: " + j.p;
+            document.getElementById('s').innerText = "SECRET = " + j.secret;
+        }
+
+        async function st() {
+            let y = await fetch('http://127.0.0.1:5000/start');
+            let j = await y.json();
+            document.getElementById('a').innerText = j.m;
+            document.getElementById('b').innerText = "Pos: " + j.p;
+            document.getElementById('s').innerText = "SECRET = " + j.secret;
+        }
+    </script>
+</body>
+</html>
