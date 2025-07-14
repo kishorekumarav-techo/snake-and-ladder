@@ -1,6 +1,8 @@
 from flask import Flask, jsonify
 import random
 
+
+
 x = Flask(__name__)
 SECRET = "thisisaveryexposedsecretkey123"
 
