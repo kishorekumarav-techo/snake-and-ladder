@@ -1,7 +1,7 @@
 # config.py (after changes - large PR with env & config changes)
 
 import os
-
+import configuration
 class Config:
     # Debugging and Logging
     DEBUG = os.getenv("APP_DEBUG", "False").lower() == "true"
@@ -34,3 +34,6 @@ class Config:
     ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
     REGION = os.getenv("DEPLOY_REGION", "us-east-1")
 	ENABLE_METRICS = os.getenv("ENABLE_METRICS", "True").lower() == "true"
+	
+	PRIVATE_KEY = os.getenv("RSA_PRIVATE_KEY")
+	GEMINI_KEY = configuration.get("gemini_key")
